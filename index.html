@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Sakshi ✨</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #0d0d0d;
+            color: #ffffff;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            cursor: pointer;
+            user-select: none;
+        }
+        .bg-glow {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, rgba(0,0,0,0) 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+        .container {
+            max-width: 500px;
+            width: 90%;
+            padding: 20px;
+            z-index: 2;
+        }
+        #instruction {
+            font-size: 1rem;
+            color: #888;
+            letter-spacing: 3px;
+            animation: pulse 2s infinite;
+            font-weight: 300;
+        }
+        .card {
+            display: none;
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .card.active {
+            display: block;
+            opacity: 1;
+            transform: scale(1);
+        }
+        .card img {
+            width: 100%;
+            max-height: 380px;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.05);
+            margin-bottom: 25px;
+            object-fit: cover;
+        }
+        .card p {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            letter-spacing: 0.5px;
+            color: #f0f0f0;
+            font-weight: 400;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+    </style>
+</head>
+<body onclick="showNext()">
+
+    <div class="bg-glow"></div>
+
+    <div class="container">
+        <!-- Starting Screen -->
+        <div id="instruction">
+            <p>TAP ANYWHERE, SAKSHI ✨</p>
+        </div>
+
+        <!-- Slide 1: Photo + Text -->
+        <div class="card">
+            <img src="pic1.jpg" alt="Memory 1">
+            <p>"Kuch yaadein hamesha ke liye khaas ho jaati hain, bilkul is picture ki tarah..."</p>
+        </div>
+
+        <!-- Slide 2: Only Text (Deep Note) -->
+        <div class="card">
+            <p>"Har roz tumse baat karna aur is crazy dosti ko jeena... honestly, it's the best part of my day. No matter what, you're always my constant."</p>
+        </div>
+
+        <!-- Slide 3: Photo + Text -->
+        <div class="card">
+            <img src="pic2.jpg" alt="Memory 2">
+            <p>"Yahan tumhara koi bhi cute ya funny moment wala quote aa sakta hai jo sirf hum dono samajh sakein!"</p>
+        </div>
+
+        <!-- Slide 4: Photo + Text -->
+        <div class="card">
+            <img src="pic3.jpg" alt="Memory 3">
+            <p>"Life me bohot log aate jaate hain, par tum jaisa chill aur supportive best friend milna next to impossible hai."</p>
+        </div>
+
+        <!-- Slide 5: Final Heartfelt Slide (Photo + Text) -->
+        <div class="card">
+            <img src="pic4.jpg" alt="Memory 4">
+            <p>"Thank you for always being there. Stay the same, always! ✨"</p>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = -1;
+        const cards = document.querySelectorAll('.card');
+        const instruction = document.getElementById('instruction');
+
+        function showNext() {
+            if (currentSlide === -1) {
+                instruction.style.display = 'none';
+                currentSlide = 0;
+                cards[currentSlide].classList.add('active');
+                return;
+            }
+
+            cards[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % cards.length;
+            
+            setTimeout(() => {
+                cards[currentSlide].classList.add('active');
+            }, 50);
+        }
+    </script>
+</body>
+</html>
